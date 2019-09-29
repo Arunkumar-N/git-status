@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span style="font-size: 30px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-shadow: 2px 2px 4px firebrick">
+      Git Status
+    </span>
+
+    <span routerLink="" style="font-size: 15px">
+        <mat-icon  style="font-size: 15px" class="example-icon" aria-label="Example delete icon">home</mat-icon>
+        Home 
+    </span>
+    <span routerLink="photo"  style="font-size: 15px">
+        <mat-icon  style="font-size: 15px" class="example-icon" aria-label="Example delete icon">add_a_photo</mat-icon>
+        Home 
+    </span>
+    
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button routerLink="/profile" mat-menu-item>Profile</button>
+        <button mat-menu-item (click)="auth.login()" *ngIf="!auth.loggedIn">Login</button>
+        
+        <button mat-menu-item>Settings</button>
+      </mat-menu>
+
+      &nbsp;&nbsp;
+    Arunkumar N
+    <mat-icon class="example-icon" aria-hidden="false"
+    (click)="auth.logout()" *ngIf="auth.loggedIn"
+    aria-label="Example delete icon">exit_to_app</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card>
+  <router-outlet></router-outlet>
+</mat-card>

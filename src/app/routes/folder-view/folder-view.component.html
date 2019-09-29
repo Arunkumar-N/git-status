@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{repoName}}</h3>
+    </div>
+    <hr size="2" style="background-color:grey;box-shadow: 2px 0px 5px grey">
+    <div class="panel-heading">
+        <span *ngFor="let repo of repoList;let ind = index">
+            <span (click)="back(ind)" style="cursor: pointer"><u>{{repo}}</u> / </span>
+        </span>
+    </div>
+    <hr>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12" *ngIf="isContent">
+                <div *ngFor="let content of contentList">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h6>
+                              <mat-icon class="example-icon" *ngIf="content.type==='dir'" aria-label="Example delete icon">folder_open</mat-icon>
+                              <mat-icon class="example-icon" *ngIf="content.type==='file'" aria-label="Example delete icon">insert_drive_file</mat-icon>
+                              <a style="color:blue;" (click)="pushRepoList(content.name)"><u>{{content.name}}</u></a>
+                            </h6>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="label label-primary">{{content.size}} kb</span>
+                        </div>    
+                    </div> 
+                    <hr />  
+                </div>    
+            </div> 
+            <div class="col-md-12" *ngIf="!isContent">
+                <textarea class="form-control" rows="50" [value]="contentList.content" disabled></textarea>
+            </div>   
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <mat-icon class="example-icon" aria-label="Example delete icon">camera_alt</mat-icon>
+            Photo
+          </h3>
+    </div>
+    <hr size="2" style="background-color:grey;box-shadow: 2px 0px 5px grey">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <webcam [height]="400" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+                [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+                [videoOptions]="videoOptions"
+                [imageQuality]="1"
+                (cameraSwitched)="cameraWasSwitched($event)"
+                (initError)="handleInitError($event)"
+                ></webcam>
+                <br>
+                <button class="button btn-primary" (click)="triggerSnapshot();">
+                  <mat-icon class="example-icon" aria-label="Example delete icon">camera</mat-icon> 
+                  Snap me</button>
+            </div>
+            <div class="col-md-6" *ngIf="imageTaken">
+                <img [height]="300" [width]="300" [src]="webcamImage.imageAsDataUrl"/>
+            </div>  
+        </div>
+    </div>
+</div>
